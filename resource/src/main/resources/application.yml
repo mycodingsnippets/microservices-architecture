@@ -1,0 +1,24 @@
+server:
+  port: 8181
+
+spring:
+  application:
+    name: resource-one
+
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:8282/oauth/check_token
+    client:
+      client-id: mobile
+      client-secret: abcde123
+
+zuul:
+  routes:
+    first-service:
+      path: /ms1/**
+      url: http://localhost:8081/
+
+eureka:
+  client:
+    eureka-server-port:8761

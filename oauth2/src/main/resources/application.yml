@@ -1,0 +1,60 @@
+server:
+  port: 8282
+
+#CAN BE USED FOR IN MEMORY DATA IF WE DONT CREATE CONFIG CLASSES OF INMEMORY
+#spring:
+#  security:
+#    user:
+#      name: aditya
+#      password: abcde123
+#      roles: ADMIN,USER
+#security:
+#  oauth2:
+#    client:
+#      client-id: mobile
+#      client-secret: pin
+#      access-token-validity-seconds: 3600
+#      authorized-grant-types: refresh_token,authorization_code,password,client_credentials
+#      scope: READ,WRITE
+#    authorization:
+#      check-token-access: permitAll
+
+#ways of creating tables in Spring Boot Project:
+#1) Directly on MySQL using Clients
+#2) Using JPA (Hibernate)
+#3) Placing data.sql and schema.sql files in classpath
+#4) Using Profiles - For Different Environments, create data and schema files with that naming
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_security?createDatabaseIfNotExist=true
+    username: root
+    password: Abcde123@
+    driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
+
+#Accessing Authorization Server:
+#   In our request to get token, we send clientid, clientsecret, username, password and grant type as password
+#   This was password grant type based access token which works if Auth Server and Client are from same company
+#   i.e we know our password and username wont be misused as its used by same company.
+#   Most used is Authorization Code Flow where user trust only Authorization server as there it has created account
+#   User doesnt trust Resource Server and it is not reaady to share username, password.
+#   For UI based application, auth code flow is suited.
+
+
+#Pending things:
+#   REFRESH TOKEN USAGE
+#   LOGOUT FUNCTIONALITY
