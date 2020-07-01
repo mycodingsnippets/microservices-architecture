@@ -4,6 +4,35 @@ server:
 spring:
   application:
     name: resource-one
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_security?createDatabaseIfNotExist=true
+    username: root
+    password: Abcde123@
+    driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  main:
+    allow-bean-definition-overriding=true:logging:
+  level:
+    org:
+      hibernate:
+        type: trace
+
+
+
+
+zuul:
+  routes:
+    first-service:
+      path: /ms1/**
+      url: http://localhost:8081/
 
 security:
   oauth2:
@@ -13,12 +42,6 @@ security:
       client-id: mobile
       client-secret: abcde123
 
-zuul:
-  routes:
-    first-service:
-      path: /ms1/**
-      url: http://localhost:8081/
-
 eureka:
   client:
-    eureka-server-port:8761
+    eureka-server-port: 8761

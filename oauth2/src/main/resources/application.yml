@@ -1,6 +1,10 @@
 server:
   port: 8282
 
+eureka:
+  client:
+    eureka-server-port:8761
+
 #CAN BE USED FOR IN MEMORY DATA IF WE DONT CREATE CONFIG CLASSES OF INMEMORY
 #spring:
 #  security:
@@ -39,6 +43,8 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+  application:
+    name: auth-service
 
 logging:
   level:

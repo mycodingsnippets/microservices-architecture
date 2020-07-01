@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @RequestMapping("/")
-    @PreAuthorize("hasRole('ROLE_operator')")
+//    @PreAuthorize("hasRole('ROLE_operator')")
     public String helloWorld(){
         return "Hello World";
     }
 
     @RequestMapping("/secured")
-    @PreAuthorize("hasAuthority('create_profile')")
+//    @PreAuthorize("hasAuthority('create_profile')")
     public String securedPoint(){return "Sensitive Data";}
 }
