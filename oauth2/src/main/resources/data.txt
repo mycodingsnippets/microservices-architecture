@@ -16,7 +16,7 @@ VALUES (
     'READ,WRITE',
     '3600',
     '10000',
-    'inventory,payment',
+    'test',
     'authorization_code,password,refresh_token,implicity',
     '{}'
 );
